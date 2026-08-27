@@ -105,6 +105,131 @@ p {
   color: var(--muted);
 }
 
+/* ===== SERTIFIKAT (BERANDA) ===== */
+.cert-title {
+  margin-bottom: 40px;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.cert-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.cert-media {
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+  background: #e2e8f0;
+}
+
+.cert-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.edu-campus {
+  font-size: 1.6rem;
+}
+
+/* rapatkan konten ke judul halaman */
+.detail-hero + .proj-detail,
+.detail-hero + .section {
+  padding-top: 24px;
+}
+
+/* hilangkan margin ekstra kotak info di halaman pengalaman */
+.xp-wrap .detail-meta {
+  margin-top: 0;
+}
+
+/* hover: zoom seperti pengalaman & proyek */
+.cert-media:hover img {
+  transform: scale(1.06);
+}
+
+.cert-caption {
+  padding: 20px 24px 24px;
+}
+
+.cert-date {
+  color: var(--primary);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.cert-caption h3 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.cert-meta {
+  color: var(--muted);
+}
+
+/* ===== MODAL / LIGHTBOX ===== */
+.cert-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.78);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 2000;
+}
+
+.cert-modal.open {
+  display: flex;
+}
+
+.cert-modal-box {
+  position: relative;
+  background: #ffffff;
+  padding: 24px;
+  max-width: 960px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.cert-modal-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cert-modal-box p {
+  margin-top: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.cert-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  background: #111827;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  z-index: 1;
+}
+
 /* Header */
 .header {
   position: sticky;
@@ -124,8 +249,8 @@ p {
 }
 
 .brand {
-  font-weight: 800;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: clamp(1rem, 2vw, 4rem);
 }
 
 .nav-links {
@@ -157,6 +282,22 @@ p {
   height: 44px;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+.edu-text p {
+  margin-bottom: 6px;
+}
+
+.edu-photo {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edu-photo img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
 }
 
 /* ===== HERO ===== */
@@ -222,7 +363,7 @@ p {
 }
 
 .about-desc {
-  text-align: justify; /* teks rata kiri-kanan seperti referensi */
+  text-align: justify;
 }
 
 /* Kotak background + foto di pojok kanan */
@@ -233,7 +374,7 @@ p {
   border: 1px solid var(--border);
   background: linear-gradient(180deg, #fafafa 0%, #fafafa 100%);
   box-shadow: var(--shadow);
-  min-height: 550px; /* pengaman agar kotak tidak tinggi 0 */
+  min-height: 550px;
 }
 
 .hero-photo img {
@@ -243,9 +384,9 @@ p {
   height: 100%;
   object-fit: contain;
   object-position: center bottom;
-  transform: scale(1.15);            /* perbesar foto */
-  transform-origin: center bottom;   /* patokan di bawah, jadi kaki tetap di dasar kotak */
-  opacity: 0.70; /* foto jadi semi-transparan */
+  transform: scale(1.15);
+  transform-origin: center bottom;
+  opacity: 0.70;
 }
 
 .hero .lead {
@@ -309,6 +450,146 @@ p {
   font-weight: 600;
 }
 
+/* ===== PENGALAMAN (BERANDA) ===== */
+.exp-title {
+  margin-bottom: 40px;
+}
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.exp-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 1 / 1;
+  background: #e2e8f0;
+}
+
+.exp-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.exp-media:hover img {
+  transform: scale(1.06);
+}
+
+.exp-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 22px;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0) 35%,
+    rgba(15, 23, 42, 0.78) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.exp-media:hover .exp-overlay {
+  opacity: 1;
+}
+
+.exp-overlay h3 {
+  color: #ffffff;
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.exp-overlay p {
+  color: #e2e8f0;
+  font-size: 0.95rem;
+}
+
+.exp-caption {
+  margin-top: 28px;
+}
+
+.exp-caption h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.exp-caption p {
+  margin-bottom: 10px;
+}
+
+/* ===== DETAIL PROYEK (HALAMAN PROYEK) ===== */
+.proj-detail {
+  scroll-margin-top: 90px;
+}
+
+.proj-info .list-check {
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.proj-info .badges {
+  margin-bottom: 26px;
+}
+
+.proj-detail h2 {
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  margin-bottom: 28px;
+}
+
+.proj-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 36px 44px;
+  align-items: start;
+}
+
+.proj-body > .proj-media,
+.proj-body > .proj-fitur {
+  grid-column: 1;
+}
+
+.proj-body > .proj-desc,
+.proj-body > .proj-side {
+  grid-column: 2;
+}
+
+.proj-fitur h3 {
+  margin-bottom: 12px;
+}
+
+.proj-side .badges {
+  margin: 0 0 24px;
+}
+
+.proj-side {
+  margin-left: -200px;
+  position: relative;
+  z-index: 2;
+}
+
+.proj-media {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.proj-media img {
+  width: 100%;
+  display: block;
+}
+
+.proj-desc {
+  margin-bottom: 22px;
+}
+
 /* Grid */
 .grid-2 {
   display: grid;
@@ -332,7 +613,7 @@ p {
 }
 
 .card-body {
-  padding: 24px;
+  padding: 40px;
 }
 
 .card-body p {
@@ -344,6 +625,105 @@ p {
   object-fit: cover;
   width: 100%;
   background: #e2e8f0;
+  transition: transform 0.45s ease;
+}
+
+/* ===== GALERI PENGALAMAN (3 SEJAJAR x 2 BARIS) ===== */
+.xp-wrap {
+  display: grid;
+  gap: 44px;
+}
+
+.xp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.xp-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  aspect-ratio: 3 / 4;
+  background: #e2e8f0;
+}
+
+.xp-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.xp-item:hover img {
+  transform: scale(1.06);
+}
+
+.xp-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0) 35%,
+    rgba(15, 23, 42, 0.78) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.xp-item:hover .xp-overlay {
+  opacity: 1;
+}
+
+.xp-overlay h3 {
+  color: #ffffff;
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+.xp-overlay p {
+  color: #e2e8f0;
+  font-size: 0.95rem;
+}
+
+/* ===== HALAMAN PENGALAMAN (ZIG-ZAG) ===== */
+.xp-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+  margin-bottom: 72px;
+}
+
+.xp-row:last-of-type {
+  margin-bottom: 0;
+}
+
+.xp-text h3 {
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  margin-bottom: 12px;
+}
+
+.xp-media img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.xp-row.flip .xp-media {
+  order: -1;
+}
+
+.project-thumb:hover {
+  transform: scale(1.06);
 }
 
 .link-arrow {
@@ -353,7 +733,6 @@ p {
 
 .skill-card {
   padding: 50px;
-  
 }
 
 /* ===== KEAHLIAN: 4 KOTAK SEJAJAR, PERSEGI, TEKS DI TENGAH ===== */
@@ -363,11 +742,11 @@ p {
 }
 
 #keahlian .card {
-  aspect-ratio: 1 / 1;          /* bikin kotak persegi, bukan persegi panjang */
+  aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
-  align-items: center;          /* tengah horizontal */
-  justify-content: center;      /* tengah vertikal */
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 20px;
 }
@@ -383,7 +762,7 @@ p {
 }
 
 .timeline-item {
-  padding: 24px;
+  padding: 75px 30px;
   border: 1px solid var(--border);
   border-radius: 20px;
   background: var(--white);
@@ -418,24 +797,71 @@ p {
   font-weight: 800;
 }
 
-/* Contact */
+/* ===== KONTAK (BERANDA) ===== */
+.contact-static {
+  cursor: default;
+}
+
+.contact-static:hover {
+  transform: none;
+}
+
+.contact-static:hover .contact-icon {
+  transform: none;
+}
+
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
 }
 
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 24px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  transition: transform 0.3s ease;
+}
+
+.contact-icon svg {
+  width: 32px;
+  height: 32px;
+  fill: var(--primary);
+}
+
+.contact-card:hover .contact-icon {
+  transform: scale(1.12);
+}
+
 .contact-card h3 {
+  color: var(--text);
   margin-bottom: 8px;
 }
 
 .contact-card p {
-  margin-bottom: 12px;
-}
-
-.contact-card a {
-  color: var(--primary);
-  font-weight: 700;
+  color: var(--muted);
   word-break: break-all;
 }
 
@@ -479,7 +905,7 @@ p {
 }
 
 .detail-hero {
-  padding: 70px 0 34px;
+  padding: 70px 0 10px;
 }
 
 .detail-meta {
@@ -545,13 +971,85 @@ p {
 }
 
 /* ===== RESPONSIVE ===== */
+
+@media (max-width: 1100px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
+  .xp-wrap {
+    gap: 32px;
+  }
+
+  /* di HP: foto naik ke atas, info turun ke bawah */
+  .xp-wrap .xp-grid {
+    order: -1;
+  }
+
+  .xp-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 20px;
+  }
+
+  .xp-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+
+  .xp-row .xp-media {
+    order: -1;
+  }
+
+  .proj-body {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .proj-body > .proj-media,
+  .proj-body > .proj-fitur,
+  .proj-body > .proj-desc,
+  .proj-body > .proj-side {
+    grid-column: auto;
+  }
+
+  .proj-side {
+    margin-left: 0;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exp-media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .exp-overlay {
+    opacity: 1;
+  }
+
+  .header .nav {
+    width: 100%;
+    padding: 0 18px;
+    justify-content: flex-start;
+  }
+
+  .menu-toggle {
+    margin-left: auto;
+  }
 
   #keahlian .grid-3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-    .about-grid {
+  .about-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
@@ -559,6 +1057,7 @@ p {
   .about-title {
     margin-bottom: 36px;
   }
+
   .grid-3,
   .grid-2,
   .contact-grid,
@@ -569,15 +1068,40 @@ p {
   .hero-grid {
     grid-template-columns: 1fr;
     min-height: 0;
-  }
-
-  .hero-left {
-    padding: 64px 4% 8px;
+    position: relative;
   }
 
   .hero-photo {
-    margin: 16px 4% 48px;
-    min-height: 420px;
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    min-height: 0;
+    border-radius: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+  }
+
+  .hero-photo img {
+    object-fit: cover;
+    object-position: 400% top;
+    opacity: 0.08;
+    transform: none;
+  }
+
+  .hero-left {
+    position: relative;
+    z-index: 1;
+    padding: 96px 4% 110px;
+  }
+
+  .btn-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
   }
 
   .section {
@@ -610,5 +1134,11 @@ p {
   .footer-inner {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .xp-grid {
+    grid-template-columns: 1fr;
   }
 }

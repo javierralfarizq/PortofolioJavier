@@ -49,3 +49,46 @@ if (revealElements.length > 0) {
     observer.observe(element);
   });
 }
+
+// ===== Lightbox Sertifikat =====
+const certModal = document.getElementById("cert-modal");
+const certModalImg = document.getElementById("cert-modal-img");
+const certModalTitle = document.getElementById("cert-modal-title");
+const certModalClose = document.getElementById("cert-modal-close");
+
+if (certModal) {
+  // Buka modal saat gambar sertifikat diklik
+  document.querySelectorAll(".cert-media").forEach(function (media) {
+    media.addEventListener("click", function () {
+      const img = media.querySelector("img");
+      certModalImg.src = img.src;
+      certModalImg.alt = img.alt;
+      certModalTitle.textContent = media.getAttribute("data-title") || "";
+      certModal.classList.add("open");
+      document.body.style.overflow = "hidden"; // kunci scroll belakang
+    });
+  });
+
+  // Fungsi tutup modal
+  function closeCertModal() {
+    certModal.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  // Tutup lewat tombol ✕
+  if (certModalClose) {
+    certModalClose.addEventListener("click", closeCertModal);
+  }
+
+  // Tutup lewat klik area gelap di luar kotak
+  certModal.addEventListener("click", function (e) {
+    if (e.target === certModal) closeCertModal();
+  });
+
+  // Tutup lewat tombol Escape
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && certModal.classList.contains("open")) {
+      closeCertModal();
+    }
+  });
+}
